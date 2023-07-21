@@ -1,8 +1,8 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchCards } from "./cardsAPI";
+import { fetchCards,createCards } from "./cardsAPI";
 
 const initialState = {
-  cards: ["asad "],
+  cards: [],
   status: "idle",
 };
 export const fetchCardsAsync = createAsyncThunk(
@@ -12,7 +12,13 @@ export const fetchCardsAsync = createAsyncThunk(
     return response.data;
   }
 );
-
+export const createCardsAsync = createAsyncThunk(
+    'card/createCards',
+    async(card)=>{
+        const response = await createCards(card)
+        return response.data
+    }
+);
 export const cardSlice = createSlice({
   name: 'card',
   initialState,
@@ -29,6 +35,13 @@ export const cardSlice = createSlice({
       .addCase(fetchCardsAsync.fulfilled, (state, action) => {
         state.status = "idle";
         state.cards = action.payload;
+      })
+      .addCase(createCardsAsync.pending, (state, action) => {
+    state.status = "loading";
+      })
+      .addCase(createCardsAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+        state.cards += action.payload;
       });
   },
 });

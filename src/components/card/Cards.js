@@ -1,6 +1,8 @@
 import React from "react";
+import { useSelector } from "react-redux";
 
 const Cards = (props) => {
+  
   return (
     <>
     {/* <div className="mt-6  justify-center grid grid-cols-3 gap-4 max-w-sm p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
@@ -25,7 +27,7 @@ const Cards = (props) => {
                     </div>
                     <div>
                         <div className="flex items-center justify-between text-gray-800">
-                            <p className="text-sm dark:text-gray-100">{props.date?props.date:"12th March 2023"}</p>
+                            <p className="text-sm dark:text-gray-100">{props.createdAt}</p>
                             <p className="text-sm dark:text-white">{props.author}</p>
                             <div className="w-8 h-8 rounded-full bg-gray-800 text-white flex items-center justify-center">
                                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-pencil" width={20} height={20} viewBox="0 0 24 24" strokeWidth="1.5" stroke="currentColor" fill="none" strokeLinecap="round" strokeLinejoin="round">
