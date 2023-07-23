@@ -1,9 +1,10 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchCards,createCards } from "./cardsAPI";
+import { fetchCards,createCards,deleteCard ,fetchCardById} from "./cardsAPI";
 
 const initialState = {
   cards: [],
   status: "idle",
+  selectedCard:null
 };
 export const fetchCardsAsync = createAsyncThunk(
   "card/fetchCards",
@@ -19,6 +20,22 @@ export const createCardsAsync = createAsyncThunk(
         return response.data
     }
 );
+export const deleteCardAsync = createAsyncThunk(
+    'card/deleteCard',
+    async(card)=>{
+        const response = await deleteCard(card)
+        return response.data
+    }
+);
+export const fetchCardByIdAsync = createAsyncThunk(
+  'card/fetchCardById',
+  async (id) => {
+    const response = await fetchCardById(id);
+    // The value we return becomes the `fulfilled` action payload
+    return response.data;
+  }
+);
+
 export const cardSlice = createSlice({
   name: 'card',
   initialState,
@@ -42,10 +59,28 @@ export const cardSlice = createSlice({
       .addCase(createCardsAsync.fulfilled, (state, action) => {
         state.status = "idle";
         state.cards += action.payload;
-      });
+      })
+      .addCase(deleteCardAsync.pending, (state, action) => {
+    state.status = "loading";
+      })
+      .addCase(deleteCardAsync.fulfilled, (state, action) => {
+        state.status = "idle";
+        const index=state.cards.findIndex(item=>item.id===action.payload.id)
+        state.cards.splice(index,1)
+      
+      })
+      .addCase(fetchCardByIdAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(fetchCardByIdAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        state.selectedCard = action.payload;
+      })
   },
 });
 
 export const { clearCards } = cardSlice.actions;
 export const selectCards = (state) => state.card.cards;
+export const selectCardById = (state) => state.card.selectedCards;
+
 export default cardSlice.reducer;
