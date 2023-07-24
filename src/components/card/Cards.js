@@ -1,14 +1,16 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { deleteCardAsync, fetchCardByIdAsync, selectCardById, selectCards } from "../home/cardSlice";
+import { useDispatch } from "react-redux";
+import { deleteCardAsync, fetchCardByIdAsync} from "../home/cardSlice";
+import { useNavigate } from "react-router-dom";
 
 
 const Cards = (props) => {
+   const navigate=useNavigate()
   const dispatch=useDispatch()
-  const cards=useSelector(selectCards)
-  const card=useSelector(selectCardById)
+  
   const handleCard=(e,id)=>{
 dispatch(fetchCardByIdAsync(id))
+navigate("/posts")
   }
   const handleRemove=(e,id)=>{
     dispatch(deleteCardAsync(id))
@@ -16,6 +18,8 @@ dispatch(fetchCardByIdAsync(id))
   }
   return (
     <>
+
+
         <div className=" text-full items-center justify-center px-4 py-6 text-center dark:bg-gray-900 sm:text-left md:max-xl:flex">
             <div className="">
                 <div className="tmax-w-xs h-64 flex flex-col justify-between sm:w-72  bg-white dark:bg-gray-800 rounded-lg border border-gray-400 mb-6 py-5 px-4">

@@ -5,33 +5,8 @@ import { fetchCardsAsync, selectCards, deleteCardAsync } from "./cardSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { useEffect } from "react";
 
-const card = [
-  {
-    title: "Amar",
-    description:
-      "Lorem ipsum dolor sit amet consectetur adipisicing elit. Iure assumenda, earum debitis et cumque quos quisquam libero labore, commodi perspiciatis facere reiciendis natus ex quam? Suscipit mollitia dignissimos totam facere fuga beatae officia facilis, delectus vero possimus similique ipsam blanditiis nesciunt incidunt laborum doloremque, recusandae magnam reiciendis repudiandae vitae! Magni quod ex, laborum officiis assumenda voluptatibus iste facilis tenetur incidunt perspiciatis voluptatem ea doloribus earum saepe nostrum nemo et magnam similique eum cum explicabo ipsa consectetur. Dolorum beatae error obcaecati minus adipisci totam molestias veritatis nihil iure voluptatum id dolore voluptates aliquam nulla minima nemo, architecto praesentium suscipit, sit velit accusantium natus provident quaerat. Impedit porro omnis esse molestiae magnam eveniet est dolor consequuntur alias accusamus quia, iste dolore hic at voluptatem cum!",
-    image: "image ",
-    author: "author",
-  },
-  {
-    title: "Amar",
-    description: "description",
-    image: "image ",
-    author: "author",
-  },
-  {
-    title: "Amar",
-    description: "description",
-    image: "image ",
-    author: "author",
-  },
-  {
-    title: "Amar",
-    description: "description",
-    image: "image ",
-    author: "author",
-  },
-];
+
+
 const Home = () => {
   const dispatch = useDispatch();
   const cards = useSelector(selectCards);
@@ -39,10 +14,11 @@ const Home = () => {
     dispatch(fetchCardsAsync());
   }, [dispatch]);
   return (
-    <>
+    <div className="dark:bg-dark-600">
       <Navbar />
+    
+<div className="grid grid-cols-3">
 
-      <div className="grid grid-cols-3  dark:bg-gray-900">
         {cards.map((item) => {
           return (
             <Cards
@@ -55,8 +31,9 @@ const Home = () => {
             />
           );
         })}
-      </div>
-    </>
+  </div>
+      
+    </div>
   );
 };
 
