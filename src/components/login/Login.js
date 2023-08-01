@@ -1,7 +1,33 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import { useState } from 'react'
+import axios from 'axios'
+import { useNavigate } from 'react-router-dom'
 const Login = () => {
+  let navigate =useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const handleSubmit=(e)=>{
+    e.preventDefault()
+    console.log(formData);
+    axios.post('http://localhost:8080/auth/login',formData,{ headers: {
+      'Content-Type': 'application/json'
+    }}).then(function(response){
+      console.log(response)
+    }).catch((error)=>{
+      console.log(error)
+    })
+    navigate("/");
+  }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevFormData) => ({
+      ...prevFormData,
+      [name]: value,
+    }));
+  }
   return (
     <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
         <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -16,7 +42,7 @@ const Login = () => {
         </div>
 
         <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" action="#" method="POST">
+          <form className="space-y-6" onSubmit={handleSubmit}>
             <div>
               <label htmlFor="email" className="block text-sm font-medium leading-6 text-gray-900">
                 Email address
@@ -25,7 +51,9 @@ const Login = () => {
                 <input
                   id="email"
                   name="email"
+                  value={formData.email}
                   type="email"
+                  onChange={handleChange}
                   autoComplete="email"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
@@ -49,6 +77,8 @@ const Login = () => {
                   id="password"
                   name="password"
                   type="password"
+                  value={formData.password}
+                  onChange={handleChange}
                   autoComplete="current-password"
                   required
                   className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6"
