@@ -41,8 +41,8 @@ const Navbar=()=> {
          <Link to="/profile" className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4">
            Profile
          </Link>
-         <Link to="/" className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4">
-           MyPosts
+         <Link to="/calculator" className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4">
+           Calculator
          </Link>
        
          <a href="/login" className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4">

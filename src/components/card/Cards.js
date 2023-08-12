@@ -10,7 +10,7 @@ const Cards = (props) => {
   
   const handleCard=(e,id)=>{
 dispatch(fetchCardByIdAsync(id))
-navigate("/posts")
+navigate("/edit")
   }
   const handleRemove=(e,id)=>{
     dispatch(deleteCardAsync(id))

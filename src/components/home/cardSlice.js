@@ -1,5 +1,5 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { fetchCards,createCards,deleteCard ,fetchCardById} from "./cardsAPI";
+import { fetchCards,createCards,deleteCard ,fetchCardById,updateCards} from "./cardsAPI";
 
 const initialState = {
   cards: [],
@@ -20,6 +20,13 @@ export const createCardsAsync = createAsyncThunk(
         return response.data
     }
 );
+export const updateCardsAsync = createAsyncThunk(
+  'card/updateCards',
+  async(update)=>{
+      const response = await updateCards(update)
+      return response.data
+  }
+);
 export const deleteCardAsync = createAsyncThunk(
     'card/deleteCard',
     async(card)=>{
@@ -30,7 +37,7 @@ export const deleteCardAsync = createAsyncThunk(
 export const fetchCardByIdAsync = createAsyncThunk(
   'card/fetchCardById',
   async (id) => {
-    const response = await fetchCardById(id);
+    const response=await fetchCardById(id)
     // The value we return becomes the `fulfilled` action payload
     return response.data;
   }
@@ -41,7 +48,7 @@ export const cardSlice = createSlice({
   initialState,
   reducers: {
     clearCards: (state) => {
-      state.cards = [];
+      state.selectedCard = [];
     },
   },
   extraReducers: (builder) => {
@@ -76,11 +83,21 @@ export const cardSlice = createSlice({
         state.status = 'idle';
         state.selectedCard = action.payload;
       })
+      .addCase(updateCardsAsync.pending, (state) => {
+        state.status = 'loading';
+      })
+      .addCase(updateCardsAsync.fulfilled, (state, action) => {
+        state.status = 'idle';
+        const index=state.cards.findIndex(item=>item.id===action.payload.id)
+        console.log(index,action.payload)
+        state.cards.splice(index,1,action.payload)
+        // state.cards[state.id]=action.payload;
+      })
   },
 });
 
 export const { clearCards } = cardSlice.actions;
 export const selectCards = (state) => state.card.cards;
-export const selectCardById = (state) => state.card.selectedCards;
+export const selectCardById = (state) => state.card.selectedCard;
 
 export default cardSlice.reducer;

@@ -17,21 +17,23 @@ const Home = () => {
     <div className="dark:bg-dark-600">
       <Navbar />
     
-<div className="grid grid-cols-3">
+      <div className="grid grid-cols-3">
+  {Array.isArray(cards) ? (
+    cards.map((item) => (
+      <Cards
+        id={item.id}
+        key={item.id}
+        title={item.title}
+        description={item.description}
+        image={item.image}
+        author={item.author}
+      />
+    ))
+  ) : (
+    <p>Loading...</p>
+  )}
+</div>
 
-        {cards.map((item) => {
-          return (
-            <Cards
-              id={item.id}
-              key={item.id}
-              title={item.title}
-              description={item.description}
-              image={item.image}
-              author={item.author}
-            />
-          );
-        })}
-  </div>
       
     </div>
   );

@@ -7,7 +7,8 @@ import Navbar from "./components/navbar/Navbar";
 import Login from "./components/login/Login";
 import Signup from "./components/signup/Signup";
 import PostCard from "./components/addCard/PostCard";
-
+import EditCard from "./components/addCard/EditCard.js";
+import Calculator from "./components/calculator/Calculator";
 
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
@@ -43,6 +44,28 @@ const router = createBrowserRouter([
         <div>
 <Navbar></Navbar>
         <PostCard></PostCard>
+        </div>
+      </div>
+    ),
+  },
+  {
+    path: "/edit",
+    element: (
+      <div>
+        <div>
+<Navbar></Navbar>
+       <EditCard></EditCard>
+        </div>
+      </div>
+    ),
+  },
+  {
+    path: "/calculator",
+    element: (
+      <div>
+        <div>
+<Navbar></Navbar>
+       <Calculator></Calculator>
         </div>
       </div>
     ),
