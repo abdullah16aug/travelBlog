@@ -1,10 +1,15 @@
 'use client'
 import React from 'react';
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 const Navbar=()=> {
  const [isOpen, setIsOpen] = useState(false);
-
+ const navigate=useNavigate()
+const handleLogout=(e)=>{
+e.preventDefault()
+localStorage.removeItem('token')
+navigate('login')
+}
  return (
    <nav className="flex bg-black items-center justify-between flex-wrap p-6">
      <Link to="/" className="flex items-center flex-shrink-0 text-white mr-6 lg:mr-72">
@@ -38,14 +43,14 @@ const Navbar=()=> {
          <Link to="/" className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4">
            Home
          </Link>
-         <Link to="/profile" className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4">
+         {/* <Link to="/profile" className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4">
            Profile
          </Link>
          <Link to="/calculator" className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4">
            Calculator
-         </Link>
+         </Link> */}
        
-         <a href="/login" className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4">
+         <a onClick={handleLogout} style={{ cursor: 'pointer' }} className="block mt-4 lg:inline-block lg:mt-0 text-white mr-4">
            Logout
          </a>
        
