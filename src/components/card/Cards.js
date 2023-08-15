@@ -16,17 +16,22 @@ navigate("/edit")
     dispatch(deleteCardAsync(id))
     console.log(e,id)
   }
+  const handleDetails=(e,id)=>{
+    dispatch(fetchCardByIdAsync(id))
+    navigate(`/post/${id}`)
+
+  }
   return (
     <>
 
 
         <div className=" text-full items-center justify-center px-4 py-6 text-center dark:bg-gray-900 sm:text-left md:max-xl:flex">
             <div className="">
-                <div className="tmax-w-xs h-64 flex flex-col justify-between sm:w-72  bg-white dark:bg-gray-800 rounded-lg border border-gray-400 mb-6 py-5 px-4">
-                    <div className="">
+                <div className="tmax-w-xs h-64 flex flex-col justify-between sm:w-72  bg-white dark:bg-gray-800 rounded-lg border border-gray-400 mb-6 py-5 px-4 " >
+                    <div className="" >
                       <div className="flex items-end space-x-40">
 
-                      <h4 className="text-gray-800 dark:text-yellow-300 font-bold mb-1">{props.title}</h4>
+                      <h4 className="text-gray-800 dark:text-yellow-300 font-bold mb-1 cursor-pointer" onClick={(e)=>handleDetails(e,props.id)}>{props.title}</h4>
                       <button type="button" className="mx-36 mb-5 text-red-600" onClick={(e)=>handleRemove(e,props.id)}>X</button>
                       </div>
                         <p className="text-gray-800 dark:text-gray-100 text-sm w-64 line-clamp-6 overflow-hidden">{props.description}</p>

@@ -2,9 +2,26 @@ import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { fetchCards,createCards,deleteCard ,fetchCardById,updateCards} from "./cardsAPI";
 
 const initialState = {
-  cards: [],
+  cards: [
+    // {
+    //   "title": "testing ujala",
+    //   "description": "lorem23 dasj dasfad fda fd fad re. r req fa vz fdsa fdsa fdadf fds fds dsa adfs",
+    //   "author": "abdullah2",
+    //   "createdAt": "2023-07-21T14:53:31.830Z",
+    //   "updatedAt": "2023-07-21T14:53:31.830Z",
+    //   "id": "64ba9beb1c32cc9eb1631fcd"
+    // },
+    ],
   status: "idle",
-  selectedCard:null
+  selectedCard:[{
+        "title": "testing ujala",
+      "description": "lorem23 dasj dasfad fda fd fad re. r req fa vz fdsa fdsa fdadf fds fds dsa adfs",
+      "author": "abdullah2",
+      "createdAt": "2023-07-21T14:53:31.830Z",
+      "updatedAt": "2023-07-21T14:53:31.830Z",
+      "id": "64ba9beb1c32cc9eb1631fcd"
+    
+  }]
 };
 export const fetchCardsAsync = createAsyncThunk(
   "card/fetchCards",

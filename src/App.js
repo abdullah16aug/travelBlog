@@ -9,7 +9,7 @@ import Signup from "./components/signup/Signup";
 import PostCard from "./components/addCard/PostCard";
 import EditCard from "./components/addCard/EditCard.js";
 import Calculator from "./components/calculator/Calculator";
-
+import CardDetails from "./components/card/CardDetails";
 const router = createBrowserRouter([
   { path: "/", element: <Home /> },
   {
@@ -66,6 +66,17 @@ const router = createBrowserRouter([
         <div>
 <Navbar></Navbar>
        <Calculator></Calculator>
+        </div>
+      </div>
+    ),
+  },
+  {
+    path: "/post/:id",
+    element: (
+      <div>
+        <div>
+<Navbar></Navbar>
+<CardDetails>p</CardDetails>
         </div>
       </div>
     ),
