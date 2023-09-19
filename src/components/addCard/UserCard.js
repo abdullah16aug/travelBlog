@@ -1,6 +1,6 @@
 import { Card, Avatar, Text, Group, Button, useMantineTheme } from '@mantine/core';
 import { rem } from '@mantine/core';
-import {React} from 'react'
+import { createElement } from 'react';
 const useStyles = () => {
   const statsData = [
     { label: 'Followers', value: '1.5k' },
@@ -23,20 +23,20 @@ export default function UserCard({ image, avatar, name, job, stats }) {
   const classes = useStyles();
 
   const items = stats.map((stat) => (
-    React.createElement('div', { key: stat.label },
-      React.createElement(Text, { ta: "center", fz: "lg", fw: 500 }, stat.value),
-      React.createElement(Text, { ta: "center", fz: "sm", c: "dimmed" }, stat.label)
+    createElement('div', { key: stat.label },
+      createElement(Text, { ta: "center", fz: "lg", fw: 500 }, stat.value),
+      createElement(Text, { ta: "center", fz: "sm", c: "dimmed" }, stat.label)
     )
   ));
 
   return (
-    React.createElement(Card, { withBorder: true, padding: "xl", radius: "md", className: classes.card },
-      React.createElement(Card.Section, { sx: { backgroundImage: `url(${image})`, height: 140 } }),
-      React.createElement(Avatar, { src: avatar, size: 80, radius: 80, mx: "auto", mt: -30, className: classes.avatar }),
-      React.createElement(Text, { ta: "center", fz: "lg", fw: 500, mt: "sm" }, name),
-      React.createElement(Text, { ta: "center", fz: "sm", c: "dimmed" }, job),
-      React.createElement(Group, { mt: "md", position: "center", spacing: 30 }, items),
-      React.createElement(Button, {
+    createElement(Card, { withBorder: true, padding: "xl", radius: "md", className: classes.card },
+      createElement(Card.Section, { sx: { backgroundImage: `url(${image})`, height: 140 } }),
+      createElement(Avatar, { src: avatar, size: 80, radius: 80, mx: "auto", mt: -30, className: classes.avatar }),
+      createElement(Text, { ta: "center", fz: "lg", fw: 500, mt: "sm" }, name),
+      createElement(Text, { ta: "center", fz: "sm", c: "dimmed" }, job),
+      createElement(Group, { mt: "md", position: "center", spacing: 30 }, items),
+      createElement(Button, {
         fullWidth: true,
         radius: "md",
         mt: "xl",

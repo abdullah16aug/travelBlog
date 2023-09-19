@@ -1,4 +1,4 @@
-import React from "react";
+
 import { Link } from "react-router-dom";
 import { useState ,useContext} from "react";
 import axios from "axios";
@@ -19,15 +19,15 @@ const Login = () => {
       },
     })
       .then(function (response) {
-        // console.log(response);
+        console.log(response);
     
-        if (response && response.data.token) {
+        if (response.status==201) {
           console.log('Token received. Redirecting...',response);
-          localStorage.setItem('token', response.data.token);
+          localStorage.setItem('token', response.data);
           // setAuthState({ isLoggedIn: true, token: response.data.token })
           navigate('/');
         }else{
-          console.log('not going in if')
+          console.log('wrong credentials')
           alert('wrong credentials')
         }
       })

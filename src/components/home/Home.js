@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import  { useState, useEffect } from "react";
 import Navbar from "../navbar/Navbar";
 import Cards from "../card/Cards";
 import { fetchCardsAsync, selectCards, deleteCardAsync } from "./cardSlice";

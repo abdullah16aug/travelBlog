@@ -42,8 +42,8 @@ const router = createBrowserRouter([
     element: (
       <div>
         <div>
-<Navbar></Navbar>
-        <PostCard></PostCard>
+          <Navbar></Navbar>
+          <PostCard></PostCard>
         </div>
       </div>
     ),
@@ -53,8 +53,8 @@ const router = createBrowserRouter([
     element: (
       <div>
         <div>
-<Navbar></Navbar>
-       <EditCard></EditCard>
+          <Navbar></Navbar>
+          <EditCard></EditCard>
         </div>
       </div>
     ),
@@ -64,8 +64,8 @@ const router = createBrowserRouter([
     element: (
       <div>
         <div>
-<Navbar></Navbar>
-       <Calculator></Calculator>
+          <Navbar></Navbar>
+          <Calculator></Calculator>
         </div>
       </div>
     ),
@@ -75,8 +75,8 @@ const router = createBrowserRouter([
     element: (
       <div>
         <div>
-<Navbar></Navbar>
-<CardDetails>p</CardDetails>
+          <Navbar></Navbar>
+          <CardDetails>p</CardDetails>
         </div>
       </div>
     ),
@@ -85,13 +85,7 @@ const router = createBrowserRouter([
 function App() {
   return (
     <>
-   
-
-
-
       <RouterProvider router={router} />
-
-  
     </>
   );
 }

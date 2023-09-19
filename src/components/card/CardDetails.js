@@ -1,4 +1,4 @@
-import React from 'react'
+
 import { selectCardById } from '../home/cardSlice'
 import { useSelector } from 'react-redux'
 const CardDetails = (req,res) => {
