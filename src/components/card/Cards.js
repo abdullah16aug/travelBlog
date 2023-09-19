@@ -14,7 +14,7 @@ navigate("/edit")
   }
   const handleRemove=(e,id)=>{
     dispatch(deleteCardAsync(id))
-    console.log(e,id)
+    // console.log(e,id)
   }
   const handleDetails=(e,id)=>{
     dispatch(fetchCardByIdAsync(id))

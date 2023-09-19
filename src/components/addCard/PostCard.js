@@ -24,7 +24,7 @@ const PostCard = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission here (e.g., send data to the server)
-    console.log(formData);
+    // console.log(formData);
     dispatch(createCardsAsync(formData));
     navigate("/");
   };

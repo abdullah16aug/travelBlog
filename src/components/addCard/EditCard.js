@@ -26,7 +26,7 @@ useEffect(()=>{
     description: item.description,
     author: item.author
   });
-  console.log(formData)
+  // console.log(formData)
  }
 },[item])
   const handleChange = (e) => {
@@ -40,7 +40,7 @@ useEffect(()=>{
   const handleSubmit = (e) => {
     e.preventDefault();
     // Handle form submission here (e.g., send data to the server)
-    console.log(formData);
+    // console.log(formData);
     dispatch(clearCards)
   
     dispatch(updateCardsAsync(formData));

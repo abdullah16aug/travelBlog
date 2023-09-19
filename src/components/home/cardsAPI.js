@@ -41,10 +41,10 @@ export function updateCards(update){
         });
       }
 
-export function deleteCard(id){
+export function deleteCard(cardid){
     return new Promise(async(resolve)=>{
         
-        const response =await fetch("http://localhost:8080/blogs/"+ id,{
+        const response =await fetch("http://localhost:8080/blogs/"+ cardid,{
             method:'DELETE',
             headers:{
             'content-type':'application/json'
@@ -52,6 +52,7 @@ export function deleteCard(id){
         }
         )
         const data=await response.json()
-        resolve({data:{item:id}})
+        // console.log(data)
+        resolve({data:{id:cardid}})
     })
 }

@@ -106,7 +106,7 @@ export const cardSlice = createSlice({
       .addCase(updateCardsAsync.fulfilled, (state, action) => {
         state.status = 'idle';
         const index=state.cards.findIndex(item=>item.id===action.payload.id)
-        console.log(index,action.payload)
+        // console.log(index,action.payload)
         state.cards.splice(index,1,action.payload)
         // state.cards[state.id]=action.payload;
       })
